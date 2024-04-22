@@ -11,4 +11,4 @@ dependencies:
 
 ## Available components
 - [x] Input text
-- [ ] Button
+- [x] Button
