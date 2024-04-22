@@ -10,14 +10,14 @@ class AppButton extends StatelessWidget {
   final EdgeInsets? margin;
 
   const AppButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
     required this.textColor,
     this.backgroundColor,
     this.isEnabled = true,
     this.margin = const EdgeInsets.only(top: 12, bottom: 12),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

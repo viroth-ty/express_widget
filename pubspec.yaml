@@ -1,7 +1,7 @@
 name: express_widget
-description: "A new Flutter project."
+description: "Express widget for flutter project"
 version: 0.0.1
-homepage:
+homepage: "https://github.com/viroth-ty/express_widget"
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -10,12 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  circular_reveal_animation: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  circular_reveal_animation: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
