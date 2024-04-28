@@ -6,7 +6,7 @@ Install package into your project in `/pubspec.yaml` file.
 dependencies:
   flutter:
     sdk: flutter
-  circular_reveal_animation: ^2.0.1
+  express_widget: ^0.0.1
 ```
 
 ## Available components
