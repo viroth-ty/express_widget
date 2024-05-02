@@ -50,6 +50,8 @@ class AppButton extends StatelessWidget {
                   if (isLoading) {
                     if (Platform.isAndroid) {
                       return const CircularProgressIndicator(
+                        strokeWidth: 2,
+                        strokeCap: StrokeCap.round,
                         color: Colors.white,
                       );
                     } else {

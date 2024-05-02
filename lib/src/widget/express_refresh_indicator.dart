@@ -20,11 +20,17 @@ class _AppRefreshIndicatorState extends State<AppRefreshIndicator> {
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
       return RefreshIndicator.adaptive(
+        edgeOffset: 0,
+        color: Colors.red,
+        strokeWidth: 1,
         onRefresh: widget.onRefresh,
         child: widget.child,
       );
     } else {
       return RefreshIndicator.adaptive(
+        edgeOffset: 0,
+        color: Colors.red,
+        strokeWidth: 1,
         onRefresh: widget.onRefresh,
         child: widget.child,
       );

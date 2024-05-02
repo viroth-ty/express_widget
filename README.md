@@ -12,8 +12,9 @@ dependencies:
 ## Available components
 - [x] Input text
 - [x] Button
-- [x] dialog
+- [x] ok dialog
 - [x] Empty
 - [x] indicator
 - [x] refresh indicator
 - [x] text field
+- [x] Progress indicator

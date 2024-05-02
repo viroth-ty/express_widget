@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   express_widget:
     path: ../
+  skeletonizer: ^1.1.2+1
 
 dev_dependencies:
   flutter_test:
