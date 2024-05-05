@@ -1,3 +1,9 @@
-## 0.0.5
+## 0.0.6
 
+-  Add okay dialog
+
+## 0.0.5
+ 
 - ExpressTextField support obscureText
+
+
