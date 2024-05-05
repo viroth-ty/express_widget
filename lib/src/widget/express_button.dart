@@ -30,45 +30,38 @@ class AppButton extends StatelessWidget {
       margin: margin,
       child: SizedBox(
         height: 48,
-        child: Builder(
-          builder: (context) {
-            return FilledButton(
-              style: ButtonStyle(
-                backgroundColor: backgroundColor != null && isEnabled == true
-                    ? MaterialStateProperty.all<Color>(backgroundColor!)
-                    : MaterialStateProperty.all<Color>(appColorGray),
-                shadowColor: MaterialStateProperty.all<Color>(appColorGray),
-                elevation: MaterialStateProperty.all<double>(3.0),
-              ),
-              onPressed: () {
-                if (isEnabled == true) {
-                  onPressed();
+        child: FilledButton(
+          style: ButtonStyle(
+            backgroundColor: backgroundColor != null && isEnabled == true
+                ? MaterialStateProperty.all<Color>(backgroundColor!)
+                : MaterialStateProperty.all<Color>(appColorGray),
+            shadowColor: MaterialStateProperty.all<Color>(appColorGray),
+            elevation: MaterialStateProperty.all<double>(3.0),
+
+          ),
+          onPressed: isEnabled == true ? onPressed : null,
+          child: Builder(
+            builder: (context) {
+              if (isLoading) {
+                if (Platform.isAndroid) {
+                  return const CircularProgressIndicator(
+                    strokeWidth: 2,
+                    strokeCap: StrokeCap.round,
+                    color: Colors.white,
+                  );
+                } else {
+                  return const CupertinoActivityIndicator();
                 }
-              },
-              child: Builder(
-                builder: (context) {
-                  if (isLoading) {
-                    if (Platform.isAndroid) {
-                      return const CircularProgressIndicator(
-                        strokeWidth: 2,
-                        strokeCap: StrokeCap.round,
-                        color: Colors.white,
-                      );
-                    } else {
-                      return const CupertinoActivityIndicator();
-                    }
-                  } else {
-                    return Text(
-                      text,
-                      style: TextStyle(
-                        color: isEnabled == true ? textColor : appColorBlack,
-                      ),
-                    );
-                  }
-                },
-              ),
-            );
-          },
+              } else {
+                return Text(
+                  text,
+                  style: TextStyle(
+                    color: isEnabled == true ? textColor : appColorBlack,
+                  ),
+                );
+              }
+            },
+          ),
         ),
       ),
     );

@@ -13,6 +13,7 @@ class ExpressTextField extends StatelessWidget {
   final String? hintText;
   final bool readOnly;
   final bool showHintText;
+  final bool obscureText;
 
   const ExpressTextField({
     super.key,
@@ -27,6 +28,7 @@ class ExpressTextField extends StatelessWidget {
     this.prefixText,
     this.focusNode,
     this.onChange,
+    this.obscureText = false,
   });
 
   @override
@@ -54,6 +56,9 @@ class ExpressTextField extends StatelessWidget {
             enableInteractiveSelection: false,
             enableIMEPersonalizedLearning: true,
             cursorColor: appColorBlack,
+            obscureText: obscureText,
+            enableSuggestions: !obscureText,
+            autocorrect: !obscureText,
             cursorOpacityAnimates: true,
             style: TextStyle(fontSize: 16, color: readOnly ? appColorBlack.withOpacity(0.4) : appColorBlack, fontWeight: FontWeight.w500),
             decoration: InputDecoration(

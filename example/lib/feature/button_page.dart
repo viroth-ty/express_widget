@@ -9,13 +9,15 @@ class ButtonPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           child: Column(
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    debugPrint("on pressed");
+                  },
                   text: "Hello",
                   textColor: Colors.white,
                   backgroundColor: Theme.of(context).primaryColor,
@@ -24,7 +26,9 @@ class ButtonPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    debugPrint("on pressed");
+                  },
                   text: "Hello",
                   textColor: Colors.white,
                   isLoading: true,
@@ -34,7 +38,9 @@ class ButtonPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    debugPrint("on pressed");
+                  },
                   text: "Hello",
                   textColor: Colors.white,
                   isEnabled: false,

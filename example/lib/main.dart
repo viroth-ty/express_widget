@@ -1,5 +1,6 @@
 import 'package:express_widget_example/feature/button_page.dart';
 import 'package:express_widget_example/feature/express_shimmer_page.dart';
+import 'package:express_widget_example/feature/input_field_page.dart';
 import 'package:express_widget_example/feature/loading_page.dart';
 import 'package:express_widget_example/feature/refresh_indicator_page.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,14 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             title: const Text("Progress circular"),
             trailing: const Icon(Icons.chevron_right_outlined),
-          )
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const InputFieldPage()));
+            },
+            title: const Text("Input field"),
+            trailing: const Icon(Icons.chevron_right_outlined),
+          ),
         ],
       ),
     );
