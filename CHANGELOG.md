@@ -1,3 +1,7 @@
+## 0.0.7
+
+-  Bugs improvement
+- 
 ## 0.0.6
 
 -  Add okay dialog

@@ -27,26 +27,106 @@ class _InputFieldPageState extends State<InputFieldPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ExpressTextField(
+                textInputAction: TextInputAction.next,
                 textEditingController: TextEditingController(),
                 hintText: "Username",
               ),
               ExpressTextField(
+                textInputAction: TextInputAction.next,
                 textEditingController: TextEditingController(),
                 hintText: "Password",
                 obscureText: true,
               ),
               ExpressTextField(
+                textInputAction: TextInputAction.done,
                 textEditingController: _textEditingController,
                 hintText: "Password",
                 obscureText: obscureText,
+                style: ExpressTextFieldStyle.rectangle,
+                borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
+                readOnly: true,
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
                       obscureText = !obscureText;
                     });
                   },
-                  icon: const Icon(CupertinoIcons.eye_slash),
+                  icon: Icon(
+                    obscureText ? CupertinoIcons.eye_slash_fill : CupertinoIcons.eye_fill,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
+              ),
+              ExpressTextField(
+                textInputAction: TextInputAction.done,
+                textEditingController: _textEditingController,
+                hintText: "Choose",
+                obscureText: obscureText,
+                style: ExpressTextFieldStyle.rectangle,
+                borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
+                readOnly: true,
+                onTap: () async {
+                  var value = await showModalBottomSheet<String>(
+                    context: context,
+                    showDragHandle: true,
+                    useSafeArea: true,
+                    useRootNavigator: true,
+                    builder: (BuildContext context) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: SafeArea(
+                          top: false,
+                          bottom: true,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 0,
+                                ),
+                                child: Text(
+                                  'Choose option',
+                                  style: headerTextStyle(),
+                                ),
+                              ),
+                              const Divider(
+                                color: appColorDarkGray,
+                                indent: 24,
+                                endIndent: 24,
+                              ),
+                              ListTile(
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 0,
+                                ),
+                                title: const Text("Create Billing"),
+                                onTap: () {
+                                  Navigator.of(context).pop("You have chose Create Billing");
+                                },
+                              ),
+                              ListTile(
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+                                title: const Text("Update status booking"),
+                                onTap: () {
+                                  Navigator.of(context).pop("You have chose Update status booking");
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                  final snackBar = SnackBar(
+                    content: Text('$value'),
+                  );
+                  if(!context.mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                suffixIcon: const Icon(Icons.arrow_downward_outlined),
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:express_widget/express_widget.dart';
+import 'package:express_widget/src/widget/textfield/style.dart';
 import 'package:flutter/material.dart';
 
 class ExpressTextField extends StatelessWidget {
@@ -7,6 +8,7 @@ class ExpressTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final String? prefixText;
   final TextInputType? textInputType;
+  final TextInputAction? textInputAction;
   final VoidCallback? onTap;
   final Function(String)? onChange;
   final TextEditingController textEditingController;
@@ -14,6 +16,8 @@ class ExpressTextField extends StatelessWidget {
   final bool readOnly;
   final bool showHintText;
   final bool obscureText;
+  final ExpressTextFieldStyle style;
+  final ExpressTextFieldBorderStyle borderStyle;
 
   const ExpressTextField({
     super.key,
@@ -25,10 +29,13 @@ class ExpressTextField extends StatelessWidget {
     this.readOnly = false,
     this.showHintText = false,
     this.textInputType = TextInputType.text,
+    this.textInputAction,
     this.prefixText,
     this.focusNode,
     this.onChange,
     this.obscureText = false,
+    this.style = ExpressTextFieldStyle.rounded,
+    this.borderStyle = ExpressTextFieldBorderStyle.showFocusBorder,
   });
 
   @override
@@ -53,6 +60,7 @@ class ExpressTextField extends StatelessWidget {
             autofocus: false,
             readOnly: readOnly,
             keyboardType: textInputType,
+            textInputAction: textInputAction,
             enableInteractiveSelection: false,
             enableIMEPersonalizedLearning: true,
             cursorColor: appColorBlack,
@@ -60,6 +68,7 @@ class ExpressTextField extends StatelessWidget {
             enableSuggestions: !obscureText,
             autocorrect: !obscureText,
             cursorOpacityAnimates: true,
+            cursorRadius: const Radius.circular(6),
             style: TextStyle(fontSize: 16, color: readOnly ? appColorBlack.withOpacity(0.4) : appColorBlack, fontWeight: FontWeight.w500),
             decoration: InputDecoration(
               hintStyle: const TextStyle(fontSize: 16),
@@ -70,11 +79,13 @@ class ExpressTextField extends StatelessWidget {
               isDense: true,
               hintText: hintText,
               fillColor: readOnly ? appColorDarkGray.withOpacity(0.5) : const Color(0xfff4f5f7),
-              border: borderStyle(),
-              disabledBorder: borderStyle(),
-              focusedErrorBorder: borderStyle(),
-              focusedBorder: borderStyle(),
-              enabledBorder: borderStyle(),
+              border: outlineInputBorder(),
+              disabledBorder: outlineInputBorder(),
+              focusedErrorBorder: outlineInputBorder(),
+              focusedBorder: borderStyle == ExpressTextFieldBorderStyle.showFocusBorder
+                  ? focusedBorderBorder(context: context)
+                  : outlineInputBorder(),
+              enabledBorder: outlineInputBorder(),
             ),
           ),
         ),
@@ -82,13 +93,22 @@ class ExpressTextField extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder borderStyle() {
-    return const OutlineInputBorder(
+  OutlineInputBorder outlineInputBorder() {
+    return OutlineInputBorder(
+      borderSide: const BorderSide(width: 0, color: Colors.white),
+      borderRadius: BorderRadius.all(Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12)),
+    );
+  }
+
+  OutlineInputBorder focusedBorderBorder({required BuildContext context}) {
+    return OutlineInputBorder(
       borderSide: BorderSide(
-          width: 0,
-          color: Colors.white
+        width: 2,
+        color: Theme.of(context).primaryColor,
       ),
-      borderRadius: BorderRadius.all(Radius.circular(50)),
+      borderRadius: BorderRadius.all(
+        Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12),
+      ),
     );
   }
 }

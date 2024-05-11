@@ -125,14 +125,14 @@ Future<void> showConfirmationDialog({
             TextButton(
               child: const Text('Cancel'),
               onPressed: () {
-                onConfirm();
+                onCancel();
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
               child: const Text('Ok'),
               onPressed: () {
-                onCancel();
+                onConfirm();
                 Navigator.of(context).pop();
               },
             ),

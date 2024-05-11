@@ -1,3 +1,4 @@
+import 'package:express_widget_example/feature/animation_page.dart';
 import 'package:express_widget_example/feature/button_page.dart';
 import 'package:express_widget_example/feature/dialog_page.dart';
 import 'package:express_widget_example/feature/express_shimmer_page.dart';
@@ -54,9 +55,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: Text(widget.title),
       ),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -105,6 +107,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const DialogPage()));
                 },
                 title: const Text("Dialog page"),
+                trailing: const Icon(Icons.chevron_right_outlined),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const IosActionMenuApp()));
+                },
+                title: const Text("Animation page"),
                 trailing: const Icon(Icons.chevron_right_outlined),
               ),
             ],
