@@ -1,3 +1,9 @@
+## 0.0.12
+- Add check box
+
+## 0.0.11
+- Improve button support style (rounded, rectangle)
+
 ## 0.0.10
 - Improvement express text field on border color
 

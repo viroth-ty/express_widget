@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:express_widget/express_widget.dart';
+import 'package:express_widget/src/widget/button/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class AppButton extends StatelessWidget {
   final Color textColor;
   final EdgeInsets? margin;
   final bool isLoading;
+  final AppButtonStyle appButtonStyle;
 
   const AppButton({
     super.key,
@@ -22,6 +24,7 @@ class AppButton extends StatelessWidget {
     this.isEnabled = true,
     this.margin = const EdgeInsets.only(top: 12, bottom: 12),
     this.isLoading = false,
+    this.appButtonStyle = AppButtonStyle.rounded,
   });
 
   @override
@@ -37,7 +40,11 @@ class AppButton extends StatelessWidget {
                 : MaterialStateProperty.all<Color>(appColorGray),
             shadowColor: MaterialStateProperty.all<Color>(appColorGray),
             elevation: MaterialStateProperty.all<double>(3.0),
-
+            shape: MaterialStateProperty.all<OutlinedBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(appButtonStyle == AppButtonStyle.rounded ? 100.0 : 12),
+              ),
+            ),
           ),
           onPressed: isEnabled == true ? onPressed : null,
           child: Builder(

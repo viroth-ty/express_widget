@@ -1,0 +1,3 @@
+enum AppButtonStyle {
+  rounded, rectangle
+}

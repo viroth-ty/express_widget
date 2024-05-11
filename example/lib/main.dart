@@ -1,5 +1,6 @@
 import 'package:express_widget_example/feature/animation_page.dart';
 import 'package:express_widget_example/feature/button_page.dart';
+import 'package:express_widget_example/feature/checkbox_page.dart';
 import 'package:express_widget_example/feature/dialog_page.dart';
 import 'package:express_widget_example/feature/express_shimmer_page.dart';
 import 'package:express_widget_example/feature/input_field_page.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       themeMode: ThemeMode.system,
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData.dark().copyWith(primaryColor: Colors.deepPurple),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -113,6 +114,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const IosActionMenuApp()));
                 },
                 title: const Text("Animation page"),
+                trailing: const Icon(Icons.chevron_right_outlined),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => const CheckBoxPage()));
+                },
+                title: const Text("Check box page"),
                 trailing: const Icon(Icons.chevron_right_outlined),
               ),
             ],

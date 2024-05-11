@@ -16,6 +16,7 @@ class ButtonPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: AppButton(
+                  appButtonStyle: AppButtonStyle.rectangle,
                   onPressed: () {
                     debugPrint("on pressed");
                   },
@@ -27,6 +28,7 @@ class ButtonPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: AppButton(
+                  appButtonStyle: AppButtonStyle.rectangle,
                   onPressed: () {
                     debugPrint("on pressed");
                   },
@@ -39,6 +41,7 @@ class ButtonPage extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: AppButton(
+                  appButtonStyle: AppButtonStyle.rectangle,
                   onPressed: () {
                     debugPrint("on pressed");
                   },
