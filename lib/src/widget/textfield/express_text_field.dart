@@ -94,7 +94,7 @@ class ExpressTextField extends StatelessWidget {
 
   OutlineInputBorder outlineInputBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0, color: Colors.white),
+      borderSide: const BorderSide(width: 0, color: Colors.grey),
       borderRadius: BorderRadius.all(Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12)),
     );
   }

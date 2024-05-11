@@ -18,26 +18,33 @@ class _InputFieldPageState extends State<InputFieldPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ExpressTextField(
+      body: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExpressTextField(
                 textInputAction: TextInputAction.next,
                 textEditingController: TextEditingController(),
                 hintText: "Username",
               ),
-              ExpressTextField(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExpressTextField(
                 textInputAction: TextInputAction.next,
                 textEditingController: TextEditingController(),
                 hintText: "Password",
                 obscureText: true,
               ),
-              ExpressTextField(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExpressTextField(
                 textInputAction: TextInputAction.done,
                 textEditingController: _textEditingController,
                 hintText: "Password",
@@ -57,7 +64,10 @@ class _InputFieldPageState extends State<InputFieldPage> {
                   ),
                 ),
               ),
-              ExpressTextField(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExpressTextField(
                 textInputAction: TextInputAction.done,
                 textEditingController: _textEditingController,
                 hintText: "Choose",
@@ -121,16 +131,18 @@ class _InputFieldPageState extends State<InputFieldPage> {
                       );
                     },
                   );
-                  final snackBar = SnackBar(
-                    content: Text('$value'),
-                  );
-                  if(!context.mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  if(value != null) {
+                    final snackBar = SnackBar(
+                      content: Text(value),
+                    );
+                    if(!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
                 },
                 suffixIcon: const Icon(Icons.arrow_downward_outlined),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

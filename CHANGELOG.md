@@ -1,5 +1,8 @@
+## 0.0.10
+- Improvement express text field on border color
+
 ## 0.0.9
-- Improvement 
+- Improvement express text field on removing margin unless header text exist
 
 ## 0.0.8
 - Updated on ExpressTextField
