@@ -1,3 +1,6 @@
+## 0.0.9
+- Improvement 
+
 ## 0.0.8
 - Updated on ExpressTextField
 - support border style (focos border)
@@ -7,13 +10,11 @@
 -  Bugs improvement
 
 ## 0.0.6
-
 -  Add okay dialog
 
 ## 0.0.5
- 
-- ExpressTextField support obscureText
 
+- ExpressTextField support obscureText
 ## 0.0.4
 - add refresh indicator
 
@@ -22,7 +23,6 @@
 - add progressable indicator
 
 ## 0.0.2
-
 - Add dialog
 - Add indicator
 
