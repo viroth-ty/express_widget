@@ -64,6 +64,7 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 obscureText: obscureText,
                 style: ExpressTextFieldStyle.rectangle,
                 borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
+                showHintText: false,
                 readOnly: true,
                 onTap: () async {
                   var value = await showModalBottomSheet<String>(

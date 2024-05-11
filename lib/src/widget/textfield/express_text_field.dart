@@ -1,5 +1,4 @@
 import 'package:express_widget/express_widget.dart';
-import 'package:express_widget/src/widget/textfield/style.dart';
 import 'package:flutter/material.dart';
 
 class ExpressTextField extends StatelessWidget {
@@ -51,7 +50,7 @@ class ExpressTextField extends StatelessWidget {
           }
         }),
         Container(
-          margin: const EdgeInsets.only(top: 8),
+          margin: EdgeInsets.only(top: showHintText == true && hintText != null ? 8 : 0),
           child: TextFormField(
             focusNode: focusNode,
             controller: textEditingController,
