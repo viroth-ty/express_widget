@@ -1,3 +1,6 @@
+## 0.0.16
+- Improve dialog
+
 ## 0.0.15
 - Updated on ExpressTextField
 - support disable background color
