@@ -14,7 +14,7 @@ class _CheckBoxPageState extends State<CheckBoxPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Checkbox demo"),
+        title: const Text("Checkbox demo"),
       ),
       body: Column(
         children: [

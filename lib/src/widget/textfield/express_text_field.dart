@@ -1,10 +1,12 @@
 import 'package:express_widget/express_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ExpressTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final Widget? label;
   final String? prefixText;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
@@ -15,8 +17,10 @@ class ExpressTextField extends StatelessWidget {
   final bool readOnly;
   final bool showHintText;
   final bool obscureText;
+  final bool enabled;
   final ExpressTextFieldStyle style;
   final ExpressTextFieldBorderStyle borderStyle;
+  final List<TextInputFormatter>? inputFormatters;
 
   const ExpressTextField({
     super.key,
@@ -35,6 +39,9 @@ class ExpressTextField extends StatelessWidget {
     this.obscureText = false,
     this.style = ExpressTextFieldStyle.rounded,
     this.borderStyle = ExpressTextFieldBorderStyle.showFocusBorder,
+    this.inputFormatters,
+    this.label,
+    this.enabled = true,
   });
 
   @override
@@ -68,27 +75,37 @@ class ExpressTextField extends StatelessWidget {
             autocorrect: !obscureText,
             cursorOpacityAnimates: true,
             cursorRadius: const Radius.circular(6),
+            inputFormatters: inputFormatters,
             style: TextStyle(fontSize: 16, color: readOnly ? appColorBlack.withOpacity(0.4) : appColorBlack, fontWeight: FontWeight.w500),
             decoration: InputDecoration(
               hintStyle: const TextStyle(fontSize: 16),
               filled: true,
+              hintText: hintText,
+              prefixText: prefixText,
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
               isCollapsed: false,
               isDense: true,
-              hintText: hintText,
-              fillColor: readOnly ? appColorDarkGray.withOpacity(0.5) : const Color(0xfff4f5f7),
+              label: label,
+              fillColor: Colors.white,
+              enabled: enabled,
               border: outlineInputBorder(),
-              disabledBorder: outlineInputBorder(),
+              disabledBorder: disabledInputBorder(),
               focusedErrorBorder: outlineInputBorder(),
-              focusedBorder: borderStyle == ExpressTextFieldBorderStyle.showFocusBorder
-                  ? focusedBorderBorder(context: context)
-                  : outlineInputBorder(),
+              focusedBorder:
+                  borderStyle == ExpressTextFieldBorderStyle.showFocusBorder ? focusedBorderBorder(context: context) : outlineInputBorder(),
               enabledBorder: outlineInputBorder(),
             ),
           ),
         ),
       ],
+    );
+  }
+
+  OutlineInputBorder disabledInputBorder() {
+    return OutlineInputBorder(
+      borderSide: const BorderSide(width: 0, color: Colors.grey),
+      borderRadius: BorderRadius.all(Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12)),
     );
   }
 

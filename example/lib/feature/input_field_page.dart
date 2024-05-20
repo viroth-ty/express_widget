@@ -1,6 +1,7 @@
 import 'package:express_widget/express_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class InputFieldPage extends StatefulWidget {
   const InputFieldPage({super.key});
@@ -31,6 +32,11 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 textInputAction: TextInputAction.next,
                 textEditingController: TextEditingController(),
                 hintText: "Username",
+                label: const Text("Username"),
+                textInputType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
               ),
             ),
             Padding(
@@ -39,6 +45,7 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 textInputAction: TextInputAction.next,
                 textEditingController: TextEditingController(),
                 hintText: "Password",
+                label: const Text("Password"),
                 obscureText: true,
               ),
             ),
@@ -48,6 +55,7 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 textInputAction: TextInputAction.done,
                 textEditingController: _textEditingController,
                 hintText: "Password",
+                label: const Text("Password"),
                 obscureText: obscureText,
                 style: ExpressTextFieldStyle.rectangle,
                 borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
@@ -71,6 +79,8 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 textInputAction: TextInputAction.done,
                 textEditingController: _textEditingController,
                 hintText: "Choose",
+                label: const Text("Choose"),
+                enabled: false,
                 obscureText: obscureText,
                 style: ExpressTextFieldStyle.rectangle,
                 borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
@@ -113,16 +123,16 @@ class _InputFieldPageState extends State<InputFieldPage> {
                                   horizontal: 24,
                                   vertical: 0,
                                 ),
-                                title: const Text("Create Billing"),
+                                title: const Text("Billing"),
                                 onTap: () {
-                                  Navigator.of(context).pop("You have chose Create Billing");
+                                  Navigator.of(context).pop("Billing");
                                 },
                               ),
                               ListTile(
                                 contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
-                                title: const Text("Update status booking"),
+                                title: const Text("Item"),
                                 onTap: () {
-                                  Navigator.of(context).pop("You have chose Update status booking");
+                                  Navigator.of(context).pop("Item");
                                 },
                               ),
                             ],
@@ -132,11 +142,7 @@ class _InputFieldPageState extends State<InputFieldPage> {
                     },
                   );
                   if(value != null) {
-                    final snackBar = SnackBar(
-                      content: Text(value),
-                    );
-                    if(!context.mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    _textEditingController.text = value;
                   }
                 },
                 suffixIcon: const Icon(Icons.arrow_downward_outlined),

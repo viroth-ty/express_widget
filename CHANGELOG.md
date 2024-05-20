@@ -1,3 +1,10 @@
+## 0.0.14
+- Updated on ExpressTextField
+- support enable border
+
+## 0.0.13
+- Updated on ExpressTextField
+- support label and input formatter
 ## 0.0.12
 - Add check box
 
