@@ -1,3 +1,7 @@
+## 0.0.15
+- Updated on ExpressTextField
+- support disable background color
+- 
 ## 0.0.14
 - Updated on ExpressTextField
 - support enable border

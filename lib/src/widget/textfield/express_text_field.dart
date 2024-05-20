@@ -87,7 +87,7 @@ class ExpressTextField extends StatelessWidget {
               isCollapsed: false,
               isDense: true,
               label: label,
-              fillColor: Colors.white,
+              fillColor: enabled ? Colors.white : appColorDarkGray.withOpacity(0.4),
               enabled: enabled,
               border: outlineInputBorder(),
               disabledBorder: disabledInputBorder(),
