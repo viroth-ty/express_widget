@@ -18,6 +18,7 @@ class ExpressTextField extends StatelessWidget {
   final bool showHintText;
   final bool obscureText;
   final bool enabled;
+  final bool isSelectable;
   final ExpressTextFieldStyle style;
   final ExpressTextFieldBorderStyle borderStyle;
   final List<TextInputFormatter>? inputFormatters;
@@ -42,6 +43,7 @@ class ExpressTextField extends StatelessWidget {
     this.inputFormatters,
     this.label,
     this.enabled = true,
+    this.isSelectable = false,
   });
 
   @override
@@ -76,7 +78,8 @@ class ExpressTextField extends StatelessWidget {
             cursorOpacityAnimates: true,
             cursorRadius: const Radius.circular(6),
             inputFormatters: inputFormatters,
-            style: TextStyle(fontSize: 16, color: readOnly ? appColorBlack.withOpacity(0.4) : appColorBlack, fontWeight: FontWeight.w500),
+            style: TextStyle(
+                fontSize: 16, color: readOnly && !isSelectable ? appColorBlack.withOpacity(0.4) : appColorBlack, fontWeight: FontWeight.w500),
             decoration: InputDecoration(
               hintStyle: const TextStyle(fontSize: 16),
               filled: true,

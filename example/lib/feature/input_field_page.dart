@@ -80,12 +80,13 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 textEditingController: _textEditingController,
                 hintText: "Choose",
                 label: const Text("Choose"),
-                enabled: false,
+                enabled: true,
                 obscureText: obscureText,
                 style: ExpressTextFieldStyle.rectangle,
                 borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
                 showHintText: false,
                 readOnly: true,
+                isSelectable: true,
                 onTap: () async {
                   var value = await showModalBottomSheet<String>(
                     context: context,
