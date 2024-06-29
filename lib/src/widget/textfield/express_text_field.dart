@@ -12,6 +12,7 @@ class ExpressTextField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final VoidCallback? onTap;
   final Function(String)? onChange;
+  final Function(String)? onFieldSubmitted;
   final TextEditingController textEditingController;
   final String? hintText;
   final bool readOnly;
@@ -44,6 +45,7 @@ class ExpressTextField extends StatelessWidget {
     this.label,
     this.enabled = true,
     this.isSelectable = false,
+    this.onFieldSubmitted,
   });
 
   @override
@@ -61,6 +63,7 @@ class ExpressTextField extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: showHintText == true && hintText != null ? 8 : 0),
           child: TextFormField(
+            onFieldSubmitted: onFieldSubmitted,
             focusNode: focusNode,
             controller: textEditingController,
             onTap: onTap,

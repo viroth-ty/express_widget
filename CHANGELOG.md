@@ -1,3 +1,7 @@
+## 0.0.18
+- Improve input text field
+- add support onFieldSubmitted properties
+- 
 ## 0.0.17
 - Improve input text field
 - add support isSelected properties

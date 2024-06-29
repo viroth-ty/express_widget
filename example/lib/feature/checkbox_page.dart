@@ -16,43 +16,46 @@ class _CheckBoxPageState extends State<CheckBoxPage> {
       appBar: AppBar(
         title: const Text("Checkbox demo"),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: ExpressCheckBox(
-                  title: 'Smdfkfkdfkfkjdfkjdfkdjfdkfjdfkfdkfkall',
-                  isSelected: _checkValue != null && _checkValue == 1? true : false,
-                  onTap: () {
-                    setState(() {
-                      _checkValue = 1;
-                    });
-                  },
-                  activeColor: Theme.of(context).primaryColor,
-                  inActiveColor: appColorDarkGray,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: ExpressCheckBox(
+                    title: 'Smdfkfkdfkfkjdfkjdfkdjfdkfjdfkfdkfkall',
+                    isSelected: _checkValue != null && _checkValue == 1? true : false,
+                    onTap: () {
+                      setState(() {
+                        _checkValue = 1;
+                      });
+                    },
+                    activeColor: Theme.of(context).primaryColor,
+                    inActiveColor: appColorDarkGray,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                width: 14,
-              ),
-              Expanded(
-                child: ExpressCheckBox(
-                  title: 'Big',
-                  isSelected: _checkValue != null && _checkValue == 2? true : false,
-                  onTap: () {
-                    setState(() {
-                      _checkValue = 2;
-                    });
-                  },
-                  activeColor: Theme.of(context).primaryColor,
-                  inActiveColor: appColorDarkGray,
+                const SizedBox(
+                  width: 14,
                 ),
-              ),
-            ],
-          )
-        ],
+                Expanded(
+                  child: ExpressCheckBox(
+                    title: 'Big',
+                    isSelected: _checkValue != null && _checkValue == 2? true : false,
+                    onTap: () {
+                      setState(() {
+                        _checkValue = 2;
+                      });
+                    },
+                    activeColor: Theme.of(context).primaryColor,
+                    inActiveColor: appColorDarkGray,
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
