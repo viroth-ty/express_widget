@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:express_widget/express_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,9 +36,7 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 hintText: "Username",
                 label: const Text("Username"),
                 textInputType: TextInputType.number,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly
-                ],
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               ),
             ),
             Padding(
@@ -142,11 +142,45 @@ class _InputFieldPageState extends State<InputFieldPage> {
                       );
                     },
                   );
-                  if(value != null) {
+                  if (value != null) {
                     _textEditingController.text = value;
                   }
                 },
                 suffixIcon: const Icon(Icons.arrow_downward_outlined),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExpressTextField(
+                textInputAction: TextInputAction.done,
+                textEditingController: _textEditingController,
+                hintText: "Phone number",
+                label: const Text("Phone number"),
+                obscureText: obscureText,
+                style: ExpressTextFieldStyle.rectangle,
+                borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
+                readOnly: false,
+                textInputType: TextInputType.phone,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(12),
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  FilteringTextInputFormatter.digitsOnly,
+                  TextInputFormatter.withFunction(
+                    (oldValue, newValue) {
+                      String left = oldValue.text.substring(0, min(oldValue.selection.start, newValue.selection.end));
+                      String right = oldValue.text.substring(oldValue.selection.end);
+                      String inserted = newValue.text.substring(left.length, newValue.selection.end);
+                      String modLeft = left.replaceAll(RegExp(r'\D'), "");
+                      String modRight = right.replaceAll(RegExp(r'\D'), "");
+                      String modInserted = inserted.replaceAll(RegExp(r'\D'), "");
+                      final regEx = RegExp(r'\d{1,3}');
+                      String processString = modLeft + modInserted + modRight;
+                      String updated = regEx.allMatches(processString).map((e) => e.group(0)).join(" ");
+                      int cursorPosition = regEx.allMatches(modLeft + modInserted).map((e) => e.group(0)).join(" ").length;
+                      return TextEditingValue(text: updated, selection: TextSelection.collapsed(offset: cursorPosition));
+                    },
+                  ),
+                ],
               ),
             ),
           ],

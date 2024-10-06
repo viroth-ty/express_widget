@@ -20,7 +20,7 @@ class _DialogPageState extends State<DialogPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            AppButton(
+            ExpressButton(
               backgroundColor: Theme.of(context).primaryColor,
               isEnabled: true,
               onPressed: () {
@@ -39,7 +39,7 @@ class _DialogPageState extends State<DialogPage> {
               text: "Confirm dialog",
               textColor: Colors.white,
             ),
-            AppButton(
+            ExpressButton(
               backgroundColor: Theme.of(context).primaryColor,
               isEnabled: true,
               onPressed: () {

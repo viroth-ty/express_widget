@@ -1,3 +1,8 @@
+## 0.0.19
+- Improve input button
+- remove deprecated 
+- support child in app button
+
 ## 0.0.18
 - Improve input text field
 - add support onFieldSubmitted properties

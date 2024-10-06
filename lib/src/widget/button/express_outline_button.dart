@@ -1,21 +1,22 @@
 import 'dart:io';
 
 import 'package:express_widget/express_widget.dart';
-import 'package:express_widget/src/widget/button/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ExpressButton extends StatelessWidget {
+class ExpressOutlineButton extends StatelessWidget {
   final bool? isEnabled;
   final Color? backgroundColor;
   final VoidCallback onPressed;
   final String text;
   final Color textColor;
   final EdgeInsets? margin;
-  final bool isLoading;
   final AppButtonStyle appButtonStyle;
+  final bool showElevation;
+  final bool isLoading;
+  final Widget child;
 
-  const ExpressButton({
+  const ExpressOutlineButton({
     super.key,
     required this.onPressed,
     required this.text,
@@ -25,6 +26,8 @@ class ExpressButton extends StatelessWidget {
     this.margin = const EdgeInsets.only(top: 12, bottom: 12),
     this.isLoading = false,
     this.appButtonStyle = AppButtonStyle.rounded,
+    this.showElevation = false,
+    required this.child,
   });
 
   @override
@@ -33,14 +36,14 @@ class ExpressButton extends StatelessWidget {
       margin: margin,
       child: SizedBox(
         height: 48,
-        child: FilledButton(
+        child: OutlinedButton(
           style: ButtonStyle(
             backgroundColor: backgroundColor != null && isEnabled == true
-                ? MaterialStateProperty.all<Color>(backgroundColor!)
-                : MaterialStateProperty.all<Color>(appColorGray),
-            shadowColor: MaterialStateProperty.all<Color>(appColorGray),
-            elevation: MaterialStateProperty.all<double>(3.0),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
+                ? WidgetStateProperty.all<Color>(Colors.transparent)
+                : WidgetStateProperty.all<Color>(Colors.transparent),
+            shadowColor: WidgetStateProperty.all<Color>(appColorGray),
+            elevation: WidgetStateProperty.all<double>(showElevation ? 3.0 : 0),
+            shape: WidgetStateProperty.all<OutlinedBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(appButtonStyle == AppButtonStyle.rounded ? 100.0 : 12),
               ),
@@ -60,12 +63,7 @@ class ExpressButton extends StatelessWidget {
                   return const CupertinoActivityIndicator();
                 }
               } else {
-                return Text(
-                  text,
-                  style: TextStyle(
-                    color: isEnabled == true ? textColor : appColorBlack,
-                  ),
-                );
+                return child;
               }
             },
           ),
