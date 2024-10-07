@@ -36,8 +36,8 @@ class _DialogPageState extends State<DialogPage> {
                   },
                 );
               },
-              text: "Confirm dialog",
               textColor: Colors.white,
+              child: const Text("Confirm dialog"),
             ),
             ExpressButton(
               backgroundColor: Theme.of(context).primaryColor,
@@ -52,8 +52,8 @@ class _DialogPageState extends State<DialogPage> {
                   },
                 );
               },
-              text: "Okay dialog",
               textColor: Colors.white,
+              child: Text("Okay dialog"),
             ),
             Container(
               height: 100,

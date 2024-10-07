@@ -1,71 +1,74 @@
 import 'dart:io';
 
 import 'package:express_widget/express_widget.dart';
-import 'package:express_widget/src/widget/button/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ExpressButton extends StatelessWidget {
+class ExpressButton extends StatefulWidget {
   final bool? isEnabled;
   final Color? backgroundColor;
   final VoidCallback onPressed;
-  final String text;
   final Color textColor;
   final EdgeInsets? margin;
-  final bool isLoading;
   final AppButtonStyle appButtonStyle;
+  final bool showElevation;
+  final bool isLoading;
+  final Widget child;
 
   const ExpressButton({
     super.key,
     required this.onPressed,
-    required this.text,
     required this.textColor,
     this.backgroundColor,
     this.isEnabled = true,
     this.margin = const EdgeInsets.only(top: 12, bottom: 12),
     this.isLoading = false,
     this.appButtonStyle = AppButtonStyle.rounded,
+    this.showElevation = false,
+    required this.child,
   });
 
   @override
+  State<ExpressButton> createState() => _ExpressButtonState();
+}
+
+class _ExpressButtonState extends State<ExpressButton> with TickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
+    return InkWell(
+      onTap: () {
+        if (widget.isEnabled == true) {
+          widget.onPressed;
+        }
+      },
       child: SizedBox(
-        height: 48,
-        child: FilledButton(
-          style: ButtonStyle(
-            backgroundColor: backgroundColor != null && isEnabled == true
-                ? MaterialStateProperty.all<Color>(backgroundColor!)
-                : MaterialStateProperty.all<Color>(appColorGray),
-            shadowColor: MaterialStateProperty.all<Color>(appColorGray),
-            elevation: MaterialStateProperty.all<double>(3.0),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(appButtonStyle == AppButtonStyle.rounded ? 100.0 : 12),
-              ),
-            ),
+        height: 46,
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xfff4f5f7),
+            borderRadius: BorderRadius.circular(widget.appButtonStyle == AppButtonStyle.rounded ? 100.0 : 12),
           ),
-          onPressed: isEnabled == true ? onPressed : null,
           child: Builder(
             builder: (context) {
-              if (isLoading) {
+              if (widget.isLoading) {
                 if (Platform.isAndroid) {
-                  return const CircularProgressIndicator(
-                    strokeWidth: 2,
-                    strokeCap: StrokeCap.round,
-                    color: Colors.white,
+                  return const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        strokeWidth: 1,
+                        strokeCap: StrokeCap.round,
+                        color: Colors.white,
+                      ),
+                    ],
                   );
                 } else {
                   return const CupertinoActivityIndicator();
                 }
               } else {
-                return Text(
-                  text,
-                  style: TextStyle(
-                    color: isEnabled == true ? textColor : appColorBlack,
-                  ),
-                );
+                return Center(child: widget.child);
               }
             },
           ),

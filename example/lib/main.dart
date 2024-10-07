@@ -6,6 +6,8 @@ import 'package:express_widget_example/feature/express_shimmer_page.dart';
 import 'package:express_widget_example/feature/input_field_page.dart';
 import 'package:express_widget_example/feature/loading_page.dart';
 import 'package:express_widget_example/feature/refresh_indicator_page.dart';
+import 'package:express_widget_example/theme/dark_theme.dart';
+import 'package:express_widget_example/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,19 +18,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       themeMode: ThemeMode.system,
-      darkTheme: ThemeData.dark().copyWith(primaryColor: Colors.deepPurple),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      darkTheme: darkTheme,
+      theme: lightTheme,
       home: const MyHomePage(title: 'Express Widget Testing'),
     );
   }

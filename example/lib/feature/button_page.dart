@@ -1,6 +1,5 @@
 import 'package:express_widget/express_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class ButtonPage extends StatelessWidget {
   const ButtonPage({super.key});
@@ -8,130 +7,60 @@ class ButtonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ExpressButton(
-                  appButtonStyle: AppButtonStyle.rectangle,
-                  onPressed: () {
-                    debugPrint("on pressed");
-                  },
-                  text: "Hello",
-                  textColor: Colors.white,
-                  backgroundColor: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ExpressButton(
-                  appButtonStyle: AppButtonStyle.rectangle,
-                  onPressed: () {
-                    debugPrint("on pressed");
-                  },
-                  text: "Hello",
-                  textColor: Colors.white,
-                  isLoading: true,
-                  backgroundColor: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ExpressButton(
-                  appButtonStyle: AppButtonStyle.rectangle,
-                  onPressed: () {
-                    debugPrint("on pressed");
-                  },
-                  text: "Hello",
-                  textColor: Colors.white,
-                  isEnabled: false,
-                  backgroundColor: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ExpressOutlineButton(
-                  appButtonStyle: AppButtonStyle.rectangle,
-                  onPressed: () {
-                    debugPrint("on pressed");
-                  },
-                  text: "Hello",
-                  textColor: Colors.white,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Icon(Ionicons.logo_google),
-                      Container(width: 20),
-                      const Text(
-                        "Continue with Google",
-                        style: TextStyle(
-                          color: appColorBlack,
-                        ),
-                      ),
-                    ],
+      appBar: AppBar(
+        title: const Text("Button variant"),
+      ),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 12.0),
+                  width: MediaQuery.of(context).size.width,
+                  child: ExpressButton(
+                    appButtonStyle: AppButtonStyle.rectangle,
+                    onPressed: () {
+                      debugPrint("on pressed");
+                    },
+                    textColor: Colors.white,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    child: Text("Hello"),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ExpressOutlineButton(
-                  appButtonStyle: AppButtonStyle.rectangle,
-                  onPressed: () {
-                    debugPrint("on pressed");
-                  },
-                  text: "Hello",
-                  textColor: Colors.white,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Icon(Ionicons.logo_apple),
-                      Container(width: 20),
-                      const Text(
-                        "Continue with Apple",
-                        style: TextStyle(
-                          color: appColorBlack,
-                        ),
-                      ),
-                    ],
+                Container(
+                  margin: const EdgeInsets.only(top: 12.0),
+                  width: MediaQuery.of(context).size.width,
+                  child: ExpressButton(
+                    appButtonStyle: AppButtonStyle.rectangle,
+                    onPressed: () {
+                      debugPrint("on pressed");
+                    },
+                    textColor: Colors.white,
+                    isLoading: true,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    child: Text("Hello"),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ExpressOutlineButton(
-                  appButtonStyle: AppButtonStyle.rectangle,
-                  onPressed: () {
-                    debugPrint("on pressed");
-                  },
-                  text: "Hello",
-                  textColor: Colors.white,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Icon(Ionicons.logo_facebook),
-                      Container(width: 20),
-                      const Text(
-                        "Continue with Facebook",
-                        style: TextStyle(
-                          color: appColorBlack,
-                        ),
-                      ),
-                    ],
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.only(top: 12.0),
+                  child: ExpressButton(
+                    appButtonStyle: AppButtonStyle.rectangle,
+                    onPressed: () {
+                      debugPrint("on pressed");
+                    },
+                    textColor: Colors.white,
+                    isEnabled: false,
+                    backgroundColor: Theme.of(context).primaryColor,
+                    child: Text("Hello"),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
