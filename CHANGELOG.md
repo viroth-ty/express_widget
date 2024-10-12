@@ -1,3 +1,6 @@
+## 0.0.20
+- Improve input text field
+
 ## 0.0.19
 - Improve input button
 - remove deprecated 
