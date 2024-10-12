@@ -12,5 +12,4 @@ var darkTheme = ThemeData(
   splashFactory: NoSplash.splashFactory,
   splashColor: Colors.transparent,
   highlightColor: Colors.transparent,
-  scaffoldBackgroundColor: primaryColorDark
 );

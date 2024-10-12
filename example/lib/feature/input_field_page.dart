@@ -4,6 +4,7 @@ import 'package:express_widget/express_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ionicons/ionicons.dart';
 
 class InputFieldPage extends StatefulWidget {
   const InputFieldPage({super.key});
@@ -20,7 +21,9 @@ class _InputFieldPageState extends State<InputFieldPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Input field"),
+      ),
       body: Container(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -161,6 +164,7 @@ class _InputFieldPageState extends State<InputFieldPage> {
                 borderStyle: ExpressTextFieldBorderStyle.showFocusBorder,
                 readOnly: false,
                 textInputType: TextInputType.phone,
+                prefixIcon: const Icon(Ionicons.search),
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(12),
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),

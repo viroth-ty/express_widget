@@ -7,8 +7,8 @@ var lightTheme = ThemeData(
   primaryColor: primaryColor,
   dividerTheme: const DividerThemeData(color: Colors.black38),
   useMaterial3: true,
-  splashFactory: NoSplash.splashFactory,
-  splashColor: Colors.transparent,
+  fontFamily: "Krasar",
+  splashFactory: InkRipple.splashFactory,
   highlightColor: Colors.transparent,
   scaffoldBackgroundColor: Colors.white,
 );

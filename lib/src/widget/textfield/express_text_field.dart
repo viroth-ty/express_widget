@@ -81,25 +81,21 @@ class ExpressTextField extends StatelessWidget {
             cursorOpacityAnimates: true,
             cursorRadius: const Radius.circular(6),
             inputFormatters: inputFormatters,
-            style: TextStyle(
-                fontSize: 16, color: readOnly && !isSelectable ? appColorBlack.withOpacity(0.4) : appColorBlack, fontWeight: FontWeight.w500),
             decoration: InputDecoration(
-              hintStyle: const TextStyle(fontSize: 16),
               filled: true,
               hintText: hintText,
+              hintStyle: TextStyle(fontSize: 14),
               prefixText: prefixText,
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
               isCollapsed: false,
               isDense: true,
-              label: label,
-              fillColor: enabled ? Colors.white : appColorDarkGray.withOpacity(0.4),
+              fillColor: const Color(0xfff4f5f7),
               enabled: enabled,
               border: outlineInputBorder(),
-              disabledBorder: disabledInputBorder(),
+              disabledBorder: outlineInputBorder(),
               focusedErrorBorder: outlineInputBorder(),
-              focusedBorder:
-                  borderStyle == ExpressTextFieldBorderStyle.showFocusBorder ? focusedBorderBorder(context: context) : outlineInputBorder(),
+              focusedBorder: outlineInputBorder(),
               enabledBorder: outlineInputBorder(),
             ),
           ),
@@ -108,29 +104,10 @@ class ExpressTextField extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder disabledInputBorder() {
-    return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0, color: Colors.grey),
-      borderRadius: BorderRadius.all(Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12)),
-    );
-  }
-
   OutlineInputBorder outlineInputBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0, color: Colors.grey),
+      borderSide: const BorderSide(width: 0, color: Color(0xfff4f5f7)),
       borderRadius: BorderRadius.all(Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12)),
-    );
-  }
-
-  OutlineInputBorder focusedBorderBorder({required BuildContext context}) {
-    return OutlineInputBorder(
-      borderSide: BorderSide(
-        width: 2,
-        color: Theme.of(context).primaryColor,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(style == ExpressTextFieldStyle.rounded ? 50 : 12),
-      ),
     );
   }
 }

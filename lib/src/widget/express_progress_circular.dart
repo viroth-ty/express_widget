@@ -10,7 +10,7 @@ class AppProgressCircular extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(
       builder: (BuildContext context) {
-        if (Platform.isAndroid) {
+        if (Platform.isAndroid || Platform.isWindows)  {
           return const CircularProgressIndicator(
             strokeWidth: 2,
             strokeCap: StrokeCap.round,
